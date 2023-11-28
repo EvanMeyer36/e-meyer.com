@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GTA Radio Station Player</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <video id="backgroundVideo" autoplay muted loop>
+        <source src="/vid/vc.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <div id="overlay-content">
+        
+        <h1>Select a GTA Game</h1>
+        <ul id="gameSelect" class="game-buttons">
+            <li><button data-game="gta3" data-video="/vid/gta3.mp4">GTA 3</button></li>
+            <li><button data-game="vicecity" data-video="/vid/vc.mp4">GTA Vice City</button></li>
+            <li><button data-game="sanandreas" data-video="/vid/sa.mp4">GTA San Andreas</button></li>
+        </ul>
+        <h2>Select a Radio Station</h2>
+        <ul id="stationSelect" class="station-buttons">
+            <!-- Populate station icons dynamically using JavaScript -->
+        </ul>
+        
+        <div id="audioContainer">
+            <audio id="radioPlayer" controls loop>
+                <!-- Audio source will be added dynamically using JavaScript -->
+            </audio>
+            <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="1">
+        </div>
+        <div id="nowPlaying" class="centered">
+            <p>Now Playing:</p>
+            <p id="currentGameStation"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

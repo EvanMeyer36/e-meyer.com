@@ -1,0 +1,137 @@
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+
+/* Header styles */
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Game selection buttons styles */
+ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+li {
+    margin: 10px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:focus {
+    outline: none;
+    background-color: #0056b3;
+}
+
+/* Radio selection styles */
+#radioSelect {
+    appearance: none;
+    padding: 10px;
+    background: url('down_arrow.png') no-repeat right center;
+    background-size: 20px;
+    font-size: 16px;
+    width: 100%;
+    max-width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+#radioSelect option {
+    padding-right: 25px;
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+#radioSelect option::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Audio player and volume control styles */
+#audioContainer {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+audio {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 20px;
+}
+
+input[type="range"] {
+    width: 100%;
+    max-width: 300px;
+    margin-top: 10px;
+}
+.icon-container {
+    display: none;
+}
+.radio-button {
+    width: 120px; /* Adjust the width as needed */
+    height: 160px; /* Adjust the height as needed */
+    background-size: cover; /* Make the background image cover the button */
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: none;
+    cursor: pointer;
+    margin: 5px; /* Add some margin between buttons */
+}
+
+/* CSS for the "Now Playing" section */
+#overlay-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Place it over the video (which has a z-index of -1) */
+}
+#nowPlaying {
+    text-align: center;
+    position: absolute;
+    bottom: 20px; /* Adjust the distance from the bottom as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    color: white;
+    width: auto; /* Allow the width to adjust based on content */
+}
+#backgroundVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Place it behind the content */
+}
