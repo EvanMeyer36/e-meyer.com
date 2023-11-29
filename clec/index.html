@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="C-LEC Inc" />
+    <meta property="og:image" href ="preview.png" />
+    <title>C-LEC</title>
+    <link rel="stylesheet" href="/clec/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+</head>
+<body>
+    <div class="topnav">
+        <a class="active" href="/clec/index.html">Home</a>
+        <a href="/clec/aboutMe.html">About Me</a>
+      </div>
+      
+    <div id="main">
+        <h1 class="ml9"><center>
+            <span class="text-wrapper">
+              <span class="letters">C-LEC Inc.</span>
+            </span>
+        </center>
+          </h1>
+          
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+        <img src="avatar.png" alt="Avatar" class="avatar">
+        <h1><center><b>Evan Meyer</b></center></h1>
+        <h2><center>Owner of C-LEC Inc.</center></h2>
+        <h3><center>Internet Netowkring, VOIP, and PBX Consultant</center></h3><br>
+
+        <h2><center>Call Me</u></center></h2>
+        <a href="tel:810-355-8236"><center><h3><u>(810)-355-8236</u></h3></a>
+        <h2>Email Me:</h2>
+        <a href="mailto:evan@clecinc.net"><h3><u>evan@clecinc.net</u></h3></a>
+        <button style="font-size:24px" onclick="window.location.href='https://www.linkedin.com/in/evan-m-meyer/';">Linkedin <i class="fa fa-linkedin-square"></i></button>
+    </div>
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script>
+        VANTA.NET({
+            el: "#main",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: .00,
+            scaleMobile: 1.00,
+            color: 0xeb004d,
+            backgroundColor: 0x0
+        })
+        
+    </script>
+<script>
+    // Wrap every letter in a span
+var textWrapper = document.querySelector('.ml9 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml9 .letter',
+    scale: [0, 1],
+    duration: 1500,
+    elasticity: 600,
+    delay: (el, i) => 45 * (i+1)
+  }).add({
+    targets: '.ml9',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+</script>
+</body>
+</html>
