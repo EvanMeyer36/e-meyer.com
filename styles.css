@@ -21,6 +21,8 @@ ul.game-buttons {
     list-style: none;
     display: flex;
     justify-content: center;
+    overflow-x: auto; /* Add horizontal scroll for smaller screens */
+    white-space: nowrap; /* Prevent buttons from wrapping to the next line */
 }
 
 li {
@@ -28,18 +30,20 @@ li {
 }
 
 button {
-    background-color: #007bff;
-    color: white;
+    background-color: transparent; /* Remove background color */
+    background-size: contain; /* Make the background image fully visible */
+    background-repeat: no-repeat;
+    background-position: center center;
     border: none;
-    padding: 10px 20px;
-    font-size: 18px;
+    padding: 0; /* Remove padding to fit the logo image */
+    width: 160px; /* Set a fixed width for the buttons */
+    height: 120px; /* Set a fixed height for the buttons */
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: transform 0.2s; /* Add a transition effect for interaction */
 }
 
 button:focus {
     outline: none;
-    background-color: #0056b3;
 }
 
 /* Radio selection styles */
@@ -99,10 +103,9 @@ input[type="range"] {
 
 /* Radio button styles */
 .radio-button {
-    width: 100px;
-    height: 100px;
+    width: 160px;
+    height: 120px;
     background-size: cover;
-    align-items: center;
     background-repeat: no-repeat;
     background-position: center center;
     border: none;
@@ -123,6 +126,7 @@ input[type="range"] {
     align-items: center;
     z-index: 1; /* Place it over the video (which has a z-index of -1) */
 }
+
 
 #nowPlaying {
     text-align: center;
@@ -153,8 +157,9 @@ input[type="range"] {
     }
 
     ul.game-buttons {
-        flex-direction: column;
-        align-items: center;
+        flex-direction: row; /* Change back to row for small screens */
+        overflow-x: auto; /* Add horizontal scroll for smaller screens */
+        white-space: nowrap; /* Prevent buttons from wrapping to the next line */
     }
 
     li {
@@ -180,34 +185,31 @@ input[type="range"] {
         margin: 5px;
     }
 }
-button {
-    background-color: transparent; /* Remove background color */
-    background-size: cover; /* Make the background image cover the button */
-    background-repeat: no-repeat;
-    background-position: center center;
-    border: none;
-    padding: 0; /* Remove padding to fit the logo image */
-    width: 160px; /* Set a fixed width for the buttons */
-    height: 120px; /* Set a fixed height for the buttons */
-    cursor: pointer;
-    transition: transform 0.2s; /* Add a transition effect for interaction */
-}
 
-button:hover {
-    transform: scale(1.1); /* Apply a zoom-in effect on hover */
-}
-/* Add this CSS for radio station icons container */
-.station-buttons {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); /* Create a responsive grid with a minimum width of 160px */
-    gap: 10px; /* Add some gap between icons */
-    justify-content: center; /* Center the grid horizontally */
-}
 /* Add this CSS for radio station icons container */
 .station-buttons {
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap into multiple rows */
-    justify-content: center; /* Center the items horizontally */
-    gap: 10px; /* Add some gap between icons */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-height: 300px; /* Set a maximum height for the container */
+    overflow-y: auto; /* Add vertical scroll if needed */
 }
 
+/* Adjust radio-button styles for GTA 4 stations */
+#stationSelect .radio-button {
+    width: 140px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    cursor: pointer;
+    margin: 5px;
+}
+.play-icon {
+    display: inline;
+}
+
+.pause-icon {
+    display: none;
+}

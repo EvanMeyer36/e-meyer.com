@@ -1,14 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
     const gameButtons = document.querySelectorAll(".game-buttons button");
     const videoElement = document.getElementById("backgroundVideo");
-    const stationButtons = document.getElementById("stationSelect");
+    const stationSelect = document.getElementById("stationSelect");
     const radioPlayer = document.getElementById("radioPlayer");
     const volumeControl = document.getElementById("volumeControl");
+    const nowPlayingElement = document.getElementById("currentGameStation");
+
+
     const gameVideos = {
         gta3: '/vid/gta3.mp4',
         vicecity: '/vid/vc.mp4',
         sanandreas: '/vid/sa.mp4',
-        gta4: '/vid/gta4.mp4', // Add GTA IV video
+        gta4: '/vid/gta4.mp4',
     };
     // Define radio stations for GTA 3 and GTA Vice City
     const radioStations = {
@@ -19,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
             'Rise FM': '/audio/gta3/RISE.mp3',
             'Lips 106': '/audio/gta3/LIPS.mp3',
             'Game Radio': '/audio/gta3/GAME.mp3',
-            'MSX FM': '/audio/gta3/MSX.wav',
+            'MSX FM': '/audio/gta3/MSX.mp3',
             'Flashback 95.6': '/audio/gta3/FLASH.mp3',
             'Chatterbox FM': '/audio/gta3/CHAT.mp3',
         },
@@ -42,176 +45,124 @@ document.addEventListener("DOMContentLoaded", function () {
             'SF-UR': '/audio/sa/SF-UR.mp3',
             'Radio Los Santos': '/audio/sa/RLS.mp3',
             'Radio X': '/audio/sa/Radio X.mp3',
-            'CSR 103.9': '/audio/sanandreas/CSR.mp3',
-            'K-JAH West': '/audio/sanandreas/KJAH.mp3',
+            'CSR 103.9': '/audio/sa/CSR.mp3',
+            'K-JAH West': '/audio/sa/KJAH.mp3',
             'Master Sounds 98.3': '/audio/sa/Master Sounds 98.3.mp3',
             'WCTR': '/audio/sa/WCTR.mp3',
         },
         gta4: {
-            'Electro-Choc': 'Electro-Choc.mp3',
-            'Fusion FM': 'Fusion FM',
-            'IF99 - International Funk': 'IF99',
+            'Electro-Choc': '/audio/gta4/Electro-Choc.mp3',
             'Integrity 2.0': '/audio/gta4/Integrity 2.0.mp3',
-            'Jazz Nation Radio 108.5': 'MP3 / FLAC - Jazz Nation Radio 108.5',
-            'K109 The Studio': 'MP3 / FLAC - K109 The Studio',
-            'Liberty City Hardcore': 'MP3 / FLAC - Liberty City Hardcore',
-            'Liberty Rock Radio': 'MP3 / FLAC - Liberty Rock Radio',
-            'Massive B Soundsystem 96.9': 'MP3 / FLAC - Massive B Soundsystem 96.9',
-            'Public Liberty Radio': 'MP3 / FLAC - Public Liberty Radio',
-            'Radio Broker': 'MP3 / FLAC - Radio Broker',
-            'RamJam FM': 'MP3 / FLAC - RamJam FM',
-            'San Juan Sounds': 'MP3 / FLAC - San Juan Sounds',
-            'Self-Actualization FM': 'MP3 / FLAC - Self-Actualization FM',
-            'The Beat 102.7': 'MP3 / FLAC - The Beat 102.7',
-            'The Classics 104.1': 'MP3 / FLAC - The Classics 104.1',
-            'The Journey': 'MP3 / FLAC - The Journey',
-            'The Vibe 98.8': 'MP3 / FLAC - The Vibe 98.8',
-            'Tuff Gong Radio': 'MP3 / FLAC - Tuff Gong Radio',
-            'Vice City FM': 'MP3 / FLAC - Vice City FM',
-            'Vladivostok FM': 'MP3 / FLAC - Vladivostok FM',
-            'WKTT Radio': 'MP3 / FLAC - WKTT Radio',
+            'Jazz Nation Radio 108.5': '/audio/gta4/Jazz Nation Radio 108.5.mp3',
+            'K109 The Studio': '/audio/gta4/K109 The Studio.mp3',
+            'Liberty City Hardcore': '/audio/gta4/Liberty City Hardcore.mp3',
+            'Liberty Rock Radio': '/audio/gta4/Liberty Rock Radio.mp3',
+            'Massive B Soundsystem 96.9': '/audio/gta4/Massive B Soundsystem 96.9.mp3',
+            'Public Liberty Radio': '/audio/gta4/Public Liberty Radio.p3',
+            'Radio Broker': '/audio/gta4/Radio Broker.mp3',
+            'RamJam FM': '/audio/gta4/RamJam FM.mp3',
+            'San Juan Sounds': '/audio/gta4/San Juan Sounds.mp3',
+            'Self-Actualization FM': '/audio/gta4/Self-Actualization FM.mp3',
+            'The Beat 102.7': '/audio/gta4/The Beat 102.7.mp3',
+            'The Classics 104.1': '/audio/gta4/The Classics 104.1.mp3',
+            'The Journey': '/audio/gta4/The Journey.mp3',
+            'The Vibe 98.8': '/audio/gta4/The Vibe 98.8.mp3',
+            'Tuff Gong Radio': '/audio/gta4/Tuff Gong Radio.mp3',
+            'Vice City FM': '/audio/gta4/Vice City FM.mp3',
+            'WKTT Radio': '/audio/gta4/Commercials.mp3',
             // Add more stations if needed
         },
     
     };
+    let currentGame = "vicecity"; // Default game
+    let currentStation = "Flash FM"; // Default station
+
     function updateVideoSource(selectedGame) {
         const videoSource = gameVideos[selectedGame];
         videoElement.src = videoSource;
         videoElement.load();
     }
 
-    // Add click event listeners to game buttons
-    gameButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-            const selectedGame = button.dataset.game;
-            populateStationIcons(selectedGame);
-            updateVideoSource(selectedGame); // Update the video source
-        });
-    });
-    // Function to update the "Now Playing" section
-function updateNowPlaying(selectedGame, selectedStation) {
-    const nowPlayingElement = document.getElementById("currentGameStation");
-    nowPlayingElement.textContent = `${selectedGame} - ${selectedStation}`;
-}
-
-// Add click event listener to station buttons
-stationButtons.addEventListener("click", function (event) {
-    const target = event.target;
-
-    if (target.classList.contains("radio-button")) {
-        const selectedGame = target.dataset.game;
-        const selectedStation = target.dataset.station;
-
-        // Store the current playback position for the current station
-        playbackPositions[selectedStation] = radioPlayer.currentTime;
-
-        // Play the selected radio station
-        playRadioStation(selectedGame, selectedStation);
-
-        // Update the "Now Playing" section
-        updateNowPlaying(selectedGame, selectedStation);
+    function updateNowPlaying() {
+        nowPlayingElement.textContent = `Now Playing: ${currentGame} - ${currentStation}`;
     }
-});
-    const playbackPositions = {};
-    function populateStationIcons(selectedGame) {
-        const stations = radioStations[selectedGame];
-        const stationSelect = document.getElementById("stationSelect");
-        stationSelect.innerHTML = ""; // Clear existing icons
+
+    function playRadioStation() {
+        const audioSource = radioStations[currentGame][currentStation];
+        radioPlayer.src = audioSource;
     
+        // Check if a saved position exists for the current station
+        const savedPosition = localStorage.getItem(currentStation);
+    
+        if (savedPosition !== null) {
+            radioPlayer.currentTime = parseFloat(savedPosition);
+        } else {
+            // If no saved position, start at a random point within the audio duration
+            const audioDuration = radioPlayer.duration;
+            const randomPosition = Math.random() * audioDuration;
+            radioPlayer.currentTime = randomPosition;
+        }
+    
+        // Update the volume before playing
+        radioPlayer.volume = volumeControl.value; // Set the volume based on the control's value
+    
+        radioPlayer.play();
+    }
+    
+
+    function savePlaybackPosition() {
+        localStorage.setItem(currentStation, radioPlayer.currentTime.toString());
+    }
+
+    function populateStationIcons() {
+        const stations = radioStations[currentGame];
+        stationSelect.innerHTML = "";
+
         for (const station in stations) {
             const button = document.createElement("button");
             button.className = "radio-button";
-            button.style.backgroundImage = `url('station_icons/${station}.png')`; // Set station icon background
-            button.dataset.game = selectedGame;
+            button.style.backgroundImage = `url('station_icons/${station}.png')`;
             button.dataset.station = station;
-            button.style.width = "160px"; // Set width to 160 pixels
-            button.style.height = "120px"; // Set height to 120 pixels
             stationSelect.appendChild(button);
         }
     }
-    
-    
-    // Function to play the selected radio station
-    function playRadioStation(selectedGame, selectedStation) {
-        if (selectedGame && selectedStation) {
-            const audioSource = radioStations[selectedGame][selectedStation];
-    
-            // Calculate the audio duration (in seconds)
-            const audio = new Audio(audioSource);
-            audio.addEventListener("loadedmetadata", function () {
-                const maxDuration = audio.duration;
-    
-                // Generate a random starting point between 0 and the audio duration
-                const randomStartPosition = Math.random() * maxDuration;
-    
-                // Set the audio source dynamically based on the selected game and station
-                radioPlayer.src = `${audioSource}#t=${randomStartPosition}`;
-    
-                // Play the selected radio station
-                radioPlayer.play();
-            });
-    
-            audio.load(); // Load the audio to get its duration
-        }
-    }
-    
-    // Add click event listeners to game buttons
+
     gameButtons.forEach(function (button) {
         button.addEventListener("click", function () {
-            const selectedGame = button.dataset.game;
-            populateStationIcons(selectedGame);
+            currentGame = button.dataset.game;
+            updateVideoSource(currentGame);
+            populateStationIcons();
         });
     });
-    
 
-    // Add click event listener to station buttons
-    stationButtons.addEventListener("click", function (event) {
+
+    // Modify the stationSelect event listener to play the selected station
+    stationSelect.addEventListener("click", function (event) {
         const target = event.target;
-
+    
         if (target.classList.contains("radio-button")) {
-            const selectedGame = target.dataset.game;
-            const selectedStation = target.dataset.station;
-
-            // Stop the current audio before switching to a new station
-            radioPlayer.pause();
-
-            // Store the current playback position for the current station
-            playbackPositions[selectedStation] = radioPlayer.currentTime;
-
-            // Play the selected radio station
-            playRadioStation(selectedGame, selectedStation);
+            currentStation = target.dataset.station;
+            savePlaybackPosition(); // Save playback position before switching stations
+            playRadioStation(); // Play the selected station immediately
+            updateNowPlaying();
+    
+            // Update the station image when a radio station is clicked
+            const stationImage = document.getElementById("stationImage");
+            stationImage.src = `station_images/${currentStation}.png`; // Set the image source based on the station
         }
     });
 
-    // Add event listener to control volume
+    // Listen for timeupdate event to continuously save playback position
+    radioPlayer.addEventListener("timeupdate", savePlaybackPosition);
+
+    updateVideoSource(currentGame);
+    populateStationIcons();
+    playRadioStation();
+    updateNowPlaying();
+
+    
+
     volumeControl.addEventListener("input", function () {
         radioPlayer.volume = volumeControl.value;
     });
-
-    // Play the initial radio station when the page loads
-    playRadioStation("gta3", "Head Radio");
-    updateVideoSource("gta3"); // Set the default video
 });
-const playPauseButton = document.getElementById("playPauseButton");
-playPauseButton.addEventListener("click", function () {
-    if (radioPlayer.paused) {
-        radioPlayer.play(); // If paused, play the audio
-    } else {
-        radioPlayer.pause(); // If playing, pause the audio
-    }
-});
-function populateStationIcons(selectedGame) {
-    const stations = radioStations[selectedGame];
-    const stationSelect = document.getElementById("stationSelect");
-    stationSelect.innerHTML = ""; // Clear existing icons
-
-    for (const station in stations) {
-        const button = document.createElement("button");
-        button.className = "radio-button";
-        button.style.backgroundImage = `url('station_icons/${station}.png')`; // Set station icon background
-        button.dataset.game = selectedGame;
-        button.dataset.station = station;
-        stationSelect.appendChild(button);
-    }
-}
-
