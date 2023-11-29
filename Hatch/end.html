@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Orientation</title>
+	<style>
+		body {
+			background-color: black;
+			margin: 0;
+			padding: 0;
+		}
+		video {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			min-width: 100%;
+			min-height: 100%;
+			width: auto;
+			height: auto;
+			z-index: -100;
+		}
+		.top-nav-bar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the color of links on hover */
+.top-nav-bar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+	</style>
+	<div class="top-nav-bar">
+        <a href="http://remey-swag.com/index.html">Home</a>
+        <a href="http://remey-swag.com/GTA Radio/index.html">GTA Radio</a>
+        <a href="http://remey-swag.com/The-Hatch/index.html">The Hatch</a>
+    </div>
+</head>
+<body>
+	<video id="my-video" autoplay loop>
+		<source src="/The-Hatach/assets//end.mp4" type="video/mp4">
+	</video>
+	<script>
+		var video = document.getElementById("my-video");
+		video.addEventListener("ended", function() {
+			video.play();
+		});
+	</script>
+</body>
+</html>
