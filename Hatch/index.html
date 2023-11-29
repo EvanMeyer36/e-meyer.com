@@ -3,7 +3,7 @@
 <head>
 	
 <title>The Hatch</title>
-<link rel="icon" href="/The-Hatch/assets/TheSwanFab.png" type="image/x-icon">
+<link rel="icon" href="/Hatch/assets/TheSwanFab.png" type="image/x-icon">
 	<style>
 		body {
 			background-color: black;
@@ -46,13 +46,13 @@
 	<div class="top-nav-bar">
         <a href="http://remey-swag.com/index.html">Home</a>
         <a href="http://remey-swag.com/GTA Radio/index.html">GTA Radio</a>
-        <a href="http://remey-swag.com/The-Hatch/index.html">The Hatch</a>
+        <a href="http://remey-swag.com/Hatch/index.html">The Hatch</a>
     </div>
 </head>
 <body>
 
 	<h1>Hatch Timer: <br><span id="timer"></span></h1>
-	<img src="/The-Hatch/assets/swan.jpg"><br>
+	<img src="/Hatch/assets/swan.jpg"><br>
 	<input type="text" id="my-textbox">
 	<button onclick="getText()">Execute</button>
 	<counter><p>Times Numbers Entered <span id="count">0</span></p></counter>
@@ -92,9 +92,9 @@
 	var glyphIndex = 0;
 	var glyphInterval = null;
 	
-	var tick = new Audio('/The-Hatch/assets/tick.mp3');
-	var beepSound = new Audio('/The-Hatch/assets/beep.mp3');
-	var klaxon = new Audio('/The-Hatch/assets/klaxon.mp3');
+	var tick = new Audio('/Hatch/assets/tick.mp3');
+	var beepSound = new Audio('/Hatch/assets/beep.mp3');
+	var klaxon = new Audio('/Hatch/assets/klaxon.mp3');
 		
 		
 
@@ -145,7 +145,7 @@
 		}
 	}
 	function playLostSound() {
-		const lost = new Audio('/The-Hatch/assets/system_failure.mp3');
+		const lost = new Audio('/Hatch/assets/system_failure.mp3');
 		lost.play();
 		var shakeInterval = setInterval(shake, 50);
 		setTimeout(function() {
