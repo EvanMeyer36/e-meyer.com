@@ -42,6 +42,7 @@ h1 {
 ul.game-buttons {
     list-style: none;
     display: flex;
+    size: auto;
     justify-content: center;
     overflow-x: auto; /* Add horizontal scroll for smaller screens */
     white-space: nowrap; /* Prevent buttons from wrapping to the next line */
@@ -220,8 +221,7 @@ input[type="range"] {
 
 /* Adjust radio-button styles for GTA 4 stations */
 #stationSelect .radio-button {
-    width: 140px; /* Adjust the width as needed */
-    height: 100px; /* Adjust the height as needed */
+    size: f;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
