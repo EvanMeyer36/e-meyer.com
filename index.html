@@ -1,41 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.6.2/vanta.fog.min.js"></script>
 </head>
 <body>
     <!-- Top Navigation Bar -->
-    <div class="top-nav-bar">
+    <div class="topnav">
         <a href="http://remey-swag.com/index.html">Home</a>
         <a href="http://remey-swag.com/GTA Radio/index.html">GTA Radio</a>
         <a href="http://remey-swag.com/Hatch/index.html">The Hatch</a>
     </div>
+    <div id="main" class="center">
+        <h1>Welcome to Remey Swag</h1>
+        <p>This is my site where I can post my static website projects and demos, making it easier to share what I have been working on as well as supplying my code!</p>
+        <p>Check out the demos I've made:</p>
 
-    <h1>Welcome to Remey Swag</h1>
-    <p>This is my site where I can post my static website projects and demos, making it easier to share what I have been working on as well as suppling my code!</p>
-    <p>Check out the demos I've made:</p>
+        <a href="http://remey-swag.com/GTA Radio/index.html" class="button">GTA Radio</a>
+        <a href="http://remey-swag.com/Hatch/index.html" class="button">The Hatch</a>
 
-    <a href="http://remey-swag.com/GTA Radio/index.html" class="button">GTA Radio</a>
-    <a href="http://remey-swag.com/Hatch/index.html" class="button">The Hatch</a>
-
-    <div style="text-align: center">
-        <a href="https://github.com/andthen36/remey-swag" class="button"><img src="git.png"></a>
+        <div class="center">
+            <a href="https://github.com/andthen36/remey-swag" class="button"><img src="git.png"></a>
+        </div>
     </div>
+    
+    <!-- Initialize the Vanta.js fog effect on the body -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.6.2/vanta.fog.min.js"></script>
     <script>
         VANTA.FOG({
-            el: "body", // Apply fog effect to the entire body element
+            el: "main", // Apply the effect to the body
             mouseControls: true,
             touchControls: true,
             gyroControls: false,
             minHeight: 200.00,
-            minWidth: 200.00,
-            blurFactor: 0.49
+            minWidth: 200.00
         });
     </script>
 </body>

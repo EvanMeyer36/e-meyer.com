@@ -1,44 +1,110 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    padding-top: 60px; /* adjusted to prevent top bar from covering content */
+html{
+    font-family: Ima;
+}
+body{
     margin: 0;
-}
-.top-nav-bar {
-    background-color: #333;
-    overflow: hidden;
-    position: fixed; /* Fixing the nav bar to the top */
-    top: 0;
-    width: 100%;
-}
-.top-nav-bar a {
-    float: left;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-.top-nav-bar a:hover {
-    background-color: #ddd;
-    color: black;
 }
 #main{
     padding: 10px;
 }
-.button {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 18px;
-    cursor: pointer;
-    text-decoration: none;
+h1{
     color: white;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s;
+    letter-spacing: .06rem;
 }
-.button:hover {
-    background-color: #0056b3;
+h2{
+    color: white;
+    letter-spacing: .06rem;
+}
+h3{
+  color: white;
+  letter-spacing: .06rem;
+}
+p{
+  color: white;
+  letter-spacing: .06rem;
+}
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+.button {
+    background-color: #aa0f04; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #c01733;
+  color: white;
+}
+.avatar {
+  vertical-align: middle;
+  width: 300px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  border-radius: 50%;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+#phone-number {
+  color: white;
+  display: none;
+}
+  
+  @media only screen and (min-width: 768px) {
+    #phone-number {
+      display: block;
+      text-align: center;
+  }
+}
+.ml9 {
+  position: relative;
+  font-weight: 200;
+  font-size: 4em;
+}
+
+.ml9 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.2em;
+  padding-right: 0.05em;
+  padding-bottom: 0.1em;
+  overflow: hidden;
+}
+
+.ml9 .letter {
+  transform-origin: 50% 100%;
+  display: inline-block;
+  line-height: 1em;
+}
+.center-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center */
+    align-items: center; /* Horizontally center */
+    height: 100vh; /* Make it full-height */
 }
