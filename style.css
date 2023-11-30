@@ -1,11 +1,15 @@
 html{
     font-family: Ima;
+    color: #333;
 }
 body{
     margin: 0;
+    color: #333;
+    background-color: #333;
 }
-#main{
+main{
     padding: 10px;
+    color: #333;
 }
 h1{
     color: white;
@@ -20,7 +24,7 @@ h3{
   letter-spacing: .06rem;
 }
 p{
-  color: white;
+  color: rgb(255, 255, 255);
   letter-spacing: .06rem;
 }
 .topnav {
@@ -28,14 +32,12 @@ p{
   background-color: #333;
 }
 .button {
-    background-color: #aa0f04; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-height: 300px; /* Set a maximum height for the container */
+    overflow-y: auto; 
   }
 .topnav a {
   float: left;

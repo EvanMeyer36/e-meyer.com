@@ -14,30 +14,45 @@
         <a href="http://remey-swag.com/Hatch/index.html">The Hatch</a>
     </div>
     <div id="main" class="center">
-        <h1>Welcome to Remey Swag</h1>
+        <h1 class="ml9"><center>
+            <span class="text-wrapper">
+              <span class="letters">Remey Swag</span>
+            </span>
+        </center>
+          </h1>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
         <p>This is my site where I can post my static website projects and demos, making it easier to share what I have been working on as well as supplying my code!</p>
         <p>Check out the demos I've made:</p>
 
-        <a href="http://remey-swag.com/GTA Radio/index.html" class="button">GTA Radio</a>
-        <a href="http://remey-swag.com/Hatch/index.html" class="button">The Hatch</a>
+        
 
-        <div class="center">
+        
+            <a href="http://remey-swag.com/GTA Radio/index.html" class="button">GTA Radio</a>
+            <a href="http://remey-swag.com/Hatch/index.html" class="button">The Hatch</a>
             <a href="https://github.com/andthen36/remey-swag" class="button"><img src="git.png"></a>
-        </div>
+
     </div>
     
     <!-- Initialize the Vanta.js fog effect on the body -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.6.2/vanta.fog.min.js"></script>
     <script>
-        VANTA.FOG({
-            el: "main", // Apply the effect to the body
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00
-        });
+        // Wrap every letter in a span
+    var textWrapper = document.querySelector('.ml9 .letters');
+    textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+    
+    anime.timeline({loop: true})
+      .add({
+        targets: '.ml9 .letter',
+        scale: [0, 1],
+        duration: 1500,
+        elasticity: 600,
+        delay: (el, i) => 45 * (i+1)
+      }).add({
+        targets: '.ml9',
+        opacity: 0,
+        duration: 1000,
+        easing: "easeOutExpo",
+        delay: 1000
+      });
     </script>
 </body>
 </html>
