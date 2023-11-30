@@ -1,162 +1,155 @@
 <!DOCTYPE html>
 <html>
 <head>
-	
-<title>The Hatch</title>
-<link rel="icon" href="/Hatch/assets/TheSwanFab.png" type="image/x-icon">
-	<style>
-		body {
-			background-color: black;
-			color: white;
-			text-align: center;
-			font-size: 48px;
-			font-weight: bold;
-			padding-top: 50px;
-		}
-		input[type=text] {
-			background-color: black;
-			color: green;
-			border: 1px solid white;
-			transition: background-color 2s;
-			padding: 5px;
-		}
-		footer {
-			color: green;
-    		font-size: 14px;
-  		}
-		counter {
-			color: green;
-    		font-size: 35px;
-		}
-		.top-nav-bar a {
-    float: left;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-/* Change the color of links on hover */
-.top-nav-bar a:hover {
-    background-color: #ddd;
-    color: black;
-}
-	</style>
-	<div class="top-nav-bar">
+    <title>The Hatch</title>
+    <link rel="icon" href="/Hatch/assets/TheSwanFab.png" type="image/x-icon">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-size: 48px;
+            font-weight: bold;
+            padding-top: 50px;
+        }
+        input[type="text"] {
+            background-color: black;
+            color: green;
+            border: 1px solid white;
+            transition: background-color 2s;
+            padding: 5px;
+        }
+        footer {
+            color: green;
+            font-size: 14px;
+        }
+        counter {
+            color: green;
+            font-size: 35px;
+        }
+        .top-nav-bar {
+            overflow: hidden;
+            background-color: #333;
+        }
+        .top-nav-bar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        /* Change the color of links on hover */
+        .top-nav-bar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-nav-bar">
         <a href="http://remey-swag.com/index.html">Home</a>
         <a href="http://remey-swag.com/GTA Radio/index.html">GTA Radio</a>
         <a href="http://remey-swag.com/Hatch/index.html">The Hatch</a>
     </div>
-</head>
-<body>
+    <h1>Hatch Timer: <br><span id="timer"></span></h1>
+    <img src="/Hatch/assets/swan.jpg"><br>
+    <input type="text" id="my-textbox">
+    <button onclick="getText()">Execute</button>
+    <counter><p>Times Numbers Entered <span id="count">0</span></p></counter>
+    <script>
+        var text = "";
+        var body = document.getElementsByTagName("body")[0];
+        var timeLeft = parseInt(localStorage.getItem("timeLeft")) || 108 * 60;
 
-	<h1>Hatch Timer: <br><span id="timer"></span></h1>
-	<img src="/Hatch/assets/swan.jpg"><br>
-	<input type="text" id="my-textbox">
-	<button onclick="getText()">Execute</button>
-	<counter><p>Times Numbers Entered <span id="count">0</span></p></counter>
-	
-	<script>
-		var text = "";
-		var body = document.getElementsByTagName("body")[0];
-		var timeLeft = parseInt(localStorage.getItem("timeLeft")) || 108 * 60;
+        function updateTimer() {
+            var minutes = Math.floor(timeLeft / 60);
+            var seconds = timeLeft % 60;
+            if (timeLeft >= 240) {
+                tick.play();
+            }
+            document.getElementById("timer").innerHTML = minutes + ":" + (seconds < 10 ? "0" + seconds : seconds);
+            timeLeft -= 1;
+            if (timeLeft <= 240) {
+                beep();
+            }
+            if (timeLeft == 0) {
+                document.getElementById("timer").style.color = "red";
+                document.getElementById("timer").innerHTML = glyphs;
+                playLostSound();
+                clearInterval(countdown);
+                setTimeout(function() {
+                    location.href = 'end.html';
+                }, 12000);
+            }
+            localStorage.setItem("timeLeft", timeLeft);
+        }
 
-		function updateTimer() {
-		var minutes = Math.floor(timeLeft / 60);
-		var seconds = timeLeft % 60;
-		if (timeLeft >= 240){
-			tick.play();
-		}
-		document.getElementById("timer").innerHTML = minutes + ":" + (seconds < 10 ? "0" + seconds : seconds);
-		timeLeft -= 1;
-		if (timeLeft <= 240) {
-			beep();
-		}
-    	if (timeLeft == 0) {
-        document.getElementById("timer").style.color = "red";
-        document.getElementById("timer").innerHTML = glyphs;
-        playLostSound(); // Play the "lost.mp3" audio file and initiate effects when timer reaches zero
-        clearInterval(countdown);
-        setTimeout(function() {
-            location.href = 'end.html';
-        }, 12000);
-    }
-    localStorage.setItem("timeLeft", timeLeft);
-}
+        var countdown = setInterval(updateTimer, 1000);
+        var count = parseInt(localStorage.getItem("count"));
 
-	var countdown = setInterval(updateTimer, 1000);
-	var count = parseInt(localStorage.getItem("count"));
-	
-	var glyphs = "𓋴 𓏲 𓍒 𓄿 𓏱";
-	var glyphIndex = 0;
-	var glyphInterval = null;
-	
-	var tick = new Audio('/Hatch/assets/tick.mp3');
-	var beepSound = new Audio('/Hatch/assets/beep.mp3');
-	var klaxon = new Audio('/Hatch/assets/klaxon.mp3');
-		
-		
+        var glyphs = "𓋴 𓏲 𓍒 𓄿 𓏱";
+        var glyphIndex = 0;
+        var glyphInterval = null;
 
+        var tick = new Audio('/Hatch/assets/tick.mp3');
+        var beepSound = new Audio('/Hatch/assets/beep.mp3');
+        var klaxon = new Audio('/Hatch/assets/klaxon.mp3');
 
-	function shake() {
-		var x = 0;
-		var y = 0;
+        function shake() {
+            var x = 0;
+            var y = 0;
 
-		var offsetX = Math.random() * 10 - 5;
-		var offsetY = Math.random() * 10 - 5;
-		
-		body.style.position = "relative";
-		body.style.left = x + offsetX + "px";
-		body.style.top = y + offsetY + "px";
-	}
+            var offsetX = Math.random() * 10 - 5;
+            var offsetY = Math.random() * 10 - 5;
 
-	function getText() {
-		var textBox = document.getElementById("my-textbox");
-		text = textBox.value;
-		console.log(text);
-		if (text.trim().startsWith("set time ")) {
-			var time = parseInt(text.trim().substring(9));
-			if (time > 0) {
-			timeLeft = time * 60;
-			}
-			text = "";
-			textBox.value = "";
-		} else if (text.trim() === "4 8 15 16 23 42" && timeLeft <= 240) {
-			count = count + 1;
-			timeLeft = 108 * 60;
-			text = "";
-			
-			textBox.value = "";
-		}
-		
-	}
-    
-	
-	function beep() {
-		if (timeLeft <= 240 && timeLeft >= 60) {
-			beepSound.play();
-		} else if (timeLeft <= 60 && timeLeft % 1 === 0) {
-			klaxon.play();
-			var shakeInterval = setInterval(shake, 50);
-		setTimeout(function() {
-		clearInterval(shakeInterval);
-	}, 1000);
-		}
-	}
-	function playLostSound() {
-		const lost = new Audio('/Hatch/assets/system_failure.mp3');
-		lost.play();
-		var shakeInterval = setInterval(shake, 50);
-		setTimeout(function() {
-			clearInterval(shakeInterval);
-	}, 12000);
-		
-	}
-		
-	</script>
-	<footer>
-		<p>Copyright Dharma Initiative 1972 © <br>For a quick orientation on The Swan station <a href="https://youtu.be/XMR7JjgqsjE">click here</a><br>Serial Number: 4-8-15-16-23-42 </p>
-	  </footer>
+            body.style.position = "relative";
+            body.style.left = x + offsetX + "px";
+            body.style.top = y + offsetY + "px";
+        }
+
+        function getText() {
+            var textBox = document.getElementById("my-textbox");
+            text = textBox.value;
+            console.log(text);
+            if (text.trim().startsWith("set time ")) {
+                var time = parseInt(text.trim().substring(9));
+                if (time > 0) {
+                    timeLeft = time * 60;
+                }
+                text = "";
+                textBox.value = "";
+            } else if (text.trim() === "4 8 15 16 23 42" && timeLeft <= 240) {
+                count = count + 1;
+                timeLeft = 108 * 60;
+                text = "";
+                textBox.value = "";
+            }
+        }
+
+        function beep() {
+            if (timeLeft <= 240 && timeLeft >= 60) {
+                beepSound.play();
+            } else if (timeLeft <= 60 && timeLeft % 1 === 0) {
+                klaxon.play();
+                var shakeInterval = setInterval(shake, 50);
+                setTimeout(function() {
+                    clearInterval(shakeInterval);
+                }, 1000);
+            }
+        }
+
+        function playLostSound() {
+            const lost = new Audio('/Hatch/assets/system_failure.mp3');
+            lost.play();
+            var shakeInterval = setInterval(shake, 50);
+            setTimeout(function() {
+                clearInterval(shakeInterval);
+            }, 12000);
+        }
+    </script>
+    <footer>
+        <p>Copyright Dharma Initiative 1972 © <br>For a quick orientation on The Swan station <a href="https://youtu.be/XMR7JjgqsjE">click here</a><br>Serial Number: 4-8-15-16-23-42 </p>
+    </footer>
 </body>
 </html>

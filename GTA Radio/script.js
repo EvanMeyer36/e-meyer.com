@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
             'Liberty City Hardcore': '/GTA Radio/audio/gta4/Liberty City Hardcore.mp3',
             'Liberty Rock Radio': '/GTA Radio/audio/gta4/Liberty Rock Radio.mp3',
             'Massive B Soundsystem 96.9': '/GTA Radio/audio/gta4/Massive B Soundsystem 96.9.mp3',
-            'Public Liberty Radio': '/GTA Radio/audio/gta4/Public Liberty Radio.p3',
+            'Public Liberty Radio': '/GTA Radio/audio/gta4/Public Liberty Radio.mp3',
             'Radio Broker': '/GTA Radio/audio/gta4/Radio Broker.mp3',
             'RamJam FM': '/GTA Radio/audio/gta4/RamJam FM.mp3',
             'San Juan Sounds': '/GTA Radio/audio/gta4/San Juan Sounds.mp3',
