@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GTA IV - TV</title>
+<link rel="stylesheet" type="text/css" href="/GTA TV/styles.css">
+
+</head>
+<body>
+  <div class="top-nav-bar">
+    <a href="http://remey-swag.com/index.html"><img src="/res/home.png"></a>
+        <a href="http://remey-swag.com/GTA Radio/index.html"><img src="/res/gtaradio.png"></a>
+        <a href="http://remey-swag.com/Hatch/index.html"><img src="/res/hatch.png"></a>
+        <a href="http://remey-swag.com/GTA TV/index.html"><img src="/res/gtatv.png"></a>
+</div>
+  <div class="tv-container">
+    <video id="tv-screen" autoplay muted></video>
+    <div class="controls">
+      <!-- Mute button -->
+      <button id="mute-button" onclick="toggleMute()">Mute</button>
+      <!-- Change Channel button -->
+      <button id="channel-button" onclick="changeChannelButton()">Change Channel</button>
+    </div>
+    <img src="tv.png" alt="TV Image" id="tv-base">
+</div>
+  <script src="script.js"></script>
+</body>
+</html>

@@ -175,40 +175,32 @@ input[type="range"] {
 
 /* Responsive styles for smaller screens (phones) */
 @media screen and (max-width: 767px) {
-    body {
+    h1, h2 {
+        font-size: 18px; /* Adjust font size for headers */
+    }
+
+    .top-nav-bar a {
+        padding: 15px 10px; /* Increase tap target size */
+    }
+
+    .game-buttons li button {
+        width: 120px; /* Adjust button size */
+        height: 90px; /* Adjust button size */
+    }
+
+    /* Ensure video does not overflow the screen width */
+    #backgroundVideo {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Adjust nowPlaying section for better visibility */
+    #nowPlaying {
         font-size: 14px;
-    }
-
-    ul.game-buttons {
-        flex-direction: row; /* Change back to row for small screens */
-        overflow-x: auto; /* Add horizontal scroll for smaller screens */
-        white-space: nowrap; /* Prevent buttons from wrapping to the next line */
-    }
-
-    li {
-        margin: 5px 0;
-    }
-
-    button {
-        width: 160px;
-        height: 120px;
-    }
-
-    .radio-button {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100px;
-        height: 100px;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-        border: none;
-        cursor: pointer;
-        margin: 5px;
+        padding: 15px;
+        bottom: 10px;
     }
 }
-
 /* Add this CSS for radio station icons container */
 .station-buttons {
     display: flex;
