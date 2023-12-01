@@ -166,8 +166,3 @@ document.addEventListener("DOMContentLoaded", function () {
         radioPlayer.volume = volumeControl.value;
     });
 });
-function changeChannelButton() {
-    // Call the changeChannel function with the desired channel index
-    // For example, change to the second channel (index 1)
-    changeChannel(1);
-  }
