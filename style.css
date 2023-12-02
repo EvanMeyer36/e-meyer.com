@@ -39,24 +39,28 @@ p{
     max-height: 300px; /* Set a maximum height for the container */
     overflow-y: auto; 
   }
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav a.active {
-  background-color: #c01733;
-  color: white;
-}
+  .top-nav-bar {
+    background-color: rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+    position: fixed; /* Fixed positioning */
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it stays on top */
+  }
+  
+  .top-nav-bar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  .top-nav-bar a:hover {
+    background-color: #ddd;
+    color: rgb(255, 255, 255);
+  }
 .avatar {
   vertical-align: middle;
   width: 300px;

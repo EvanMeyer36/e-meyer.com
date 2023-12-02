@@ -19,26 +19,35 @@
 			height: auto;
 			z-index: -100;
 		}
-		.top-nav-bar a {
-    float: left;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+		.top-nav-bar {
+  background-color: rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+  position: fixed; /* Fixed positioning */
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it stays on top */
 }
 
-/* Change the color of links on hover */
+.top-nav-bar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
 .top-nav-bar a:hover {
-    background-color: #ddd;
-    color: black;
+  background-color: #ddd;
+  color: rgb(255, 255, 255);
 }
 	</style>
-  <div class="top-nav-bar">
-    <a href="http://remey-swag.com/index.html"><img src="/res/home.png"></a>
-        <a href="http://remey-swag.com/GTA Radio/index.html"><img src="/res/gtaradio.png"></a>
-        <a href="http://remey-swag.com/Hatch/index.html"><img src="/res/hatch.png"></a>
-        <a href="http://remey-swag.com/GTA TV/index.html"><img src="/res/gtatv.png"></a>
+ <div class="top-nav-bar">
+    <a href="/index.html"><img src="/res/home.png"></a>
+        <a href="/GTA Radio/index.html"><img src="/res/gtaradio.png"></a>
+        <a href="/Hatch/index.html"><img src="/res/hatch.png"></a>
+        <a href="/GTA TV/index.html"><img src="/res/gtatv.png"></a>
+        <a href="/f1/index.html"><img src="/res/f1.png"></a>
 </div>
 </head>
 <body>

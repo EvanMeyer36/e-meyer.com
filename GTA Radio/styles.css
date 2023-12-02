@@ -6,27 +6,27 @@
 }
 
 .top-nav-bar {
-    background-color: #333;
+    background-color: rgba(255, 255, 255, 0.5);
     overflow: hidden;
     position: fixed; /* Fixed positioning */
     top: 0;
     width: 100%;
     z-index: 1000; /* Ensure it stays on top */
-}
-
-.top-nav-bar a {
+  }
+  
+  .top-nav-bar a {
     float: left;
     display: block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-}
-
-.top-nav-bar a:hover {
+  }
+  
+  .top-nav-bar a:hover {
     background-color: #ddd;
-    color: black;
-}
+    color: rgb(255, 255, 255);
+  }
 
 body {
     padding-top: 50px; /* Add padding to the top of the body to account for the fixed navbar */
