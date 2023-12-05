@@ -55,24 +55,25 @@
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
-    <header class="top-nav-bar">
-        <a href="/index.html"><img src="/res/home.png" alt="Home"></a>
-        <a href="/GTA Radio/index.html"><img src="/res/gtaradio.png" alt="GTA Radio"></a>
-        <a href="/Hatch/index.html"><img src="/res/hatch.png" alt="Hatch"></a>
-        <a href="/GTA TV/index.html"><img src="/res/gtatv.png" alt="GTA TV"></a>
-        <a href="/f1/index.html"><img src="/res/f1.png" alt="Formula 1"></a>
-    </header>
+    <div class="top-nav-bar">
+        <a href="/index.html"><img src="/res/home.png"></a>
+            <a href="/GTA Radio/index.html"><img src="/res/gtaradio.png"></a>
+            <a href="/Hatch/index.html"><img src="/res/hatch.png"></a>
+            <a href="/GTA TV/index.html"><img src="/res/gtatv.png"></a>
+            <a href="/f1/index.html"><img src="/res/f1.png"></a>
+            <a href="/python/index.html"><img src="/res/python.png"></a>
+    </div>
     <main>
         <h1 class="centered"><img src="/f1/f1Goat.png" alt="F1 GOAT"></h1>
         <div class="centered">
             <button id="loadData">Load GOAT</button>
         </div>
         <div class="driver-list" id="driverList"></div>
-        <p class="centered"><b>Disclaimer:</b> The GOAT score is calculated based on a weighted sum of various statistics including championships, wins, podiums, points, fastest laps, poles, grand prix participations, laps led, and seasons.</p>
+        <p class="centered"><b>Disclaimer:</b> The GOAT score is calculated based on a weighted sum of various statistics including championships, wins, podiums, points, fastest laps, poles, grand prix participations, and seasons.</p>
         <p class="centered">
             <b>GOAT Score:</b>
             <br>
-            \((C×10)+(W×2)+P+(Pn×0.1)+F+Pl+(G×0.5)+(L×0.01)+S\)
+            \((C×10)+(W×2)+P+(Pn×0.1)+F+Pl+(G×0.5)+S\)
             <br>
             <br>
             \(C\) = Number of Championships<br>
@@ -82,7 +83,6 @@
             \(F\) = Number of Fastest Laps<br>
             \(Pl\) = Number of Poles<br>
             \(G\) = Number of Grand Prix Participations<br>
-            \(L\) = Number of Laps Led<br>
             \(S\) = Number of Seasons
         </p>
     </main>

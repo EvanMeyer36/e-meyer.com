@@ -22,7 +22,6 @@ async function getDriverStatistics(driverId) {
         fastestLaps: 0,
         poles: 0,
         gpEntered: 0,
-        laps_led: 0,
         seasons: 0
     };
 }
@@ -58,7 +57,6 @@ function calculateGoatScore(stats) {
     const fastestLaps = stats.fastestLaps || 0;
     const poles = stats.poles || 0;
     const gpParticipations = stats.gpEntered || 0;
-    const lapsLed = stats.laps_led || 0; // Corrected to laps_led
     const seasons = stats.seasons || 0;
 
     return (
@@ -69,7 +67,6 @@ function calculateGoatScore(stats) {
         fastestLaps +
         poles +
         gpParticipations * 0.5 +
-        lapsLed * 0.01 + // Corrected to laps_led
         seasons
     );
 }
@@ -103,7 +100,6 @@ async function displayDrivers() {
             <th>Fastest Laps</th>
             <th>Poles</th>
             <th>GP Participations</th>
-            <th>Laps Led</th>
             <th>Seasons</th>
             <th>Total GOAT Score</th>
         </tr>
@@ -123,7 +119,6 @@ async function displayDrivers() {
             <td>${driver.stats.fastestLaps}</td>
             <td>${driver.stats.poles}</td>
             <td>${driver.stats.gpEntered}</td>
-            <td>${driver.stats.laps_led}</td>
             <td>${driver.stats.seasons}</td>
             <td>${driver.goatScore.toFixed(2)}</td>
         `;
@@ -135,10 +130,12 @@ async function displayDrivers() {
 async function initDriverDisplay() {
     await displayDrivers();
 }
+
 function hideLoadingIndicator() {
     const listContainer = document.getElementById('driverList');
     listContainer.innerHTML = ''; // Clear the loading message
 }
+
 async function loadDriverDataOnClick() {
     startLoadingIndicator();
     await displayDrivers();

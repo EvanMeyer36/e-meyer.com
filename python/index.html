@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Python Code Snippets</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.24.1/themes/prism.css">
+    <link rel="stylesheet" href="custom.css"> <!-- Create a custom CSS file for styling -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.24.1/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.24.1/components/prism-python.js"></script>
+</head>
+<body class="dark-theme"> <!-- Apply a class for dark theme -->
+    <div class="top-nav-bar">
+        <a href="/index.html"><img src="/res/home.png"></a>
+            <a href="/GTA Radio/index.html"><img src="/res/gtaradio.png"></a>
+            <a href="/Hatch/index.html"><img src="/res/hatch.png"></a>
+            <a href="/GTA TV/index.html"><img src="/res/gtatv.png"></a>
+            <a href="/f1/index.html"><img src="/res/f1.png"></a>
+            <a href="/python/index.html"><img src="/res/python.png"></a>
+    </div>
+    <h1>Python Code Snippets</h1>
+
+    <center><table class="snippet-table">
+        <tr>
+            <!-- Code Snippet 1 -->
+            <td>
+                <div class="code-snippet">
+                    <h2>TXT to XHTML</h2>
+                    <pre><code class="language-python">
+                        import re
+                        from bs4 import BeautifulSoup
+                        import os
+                    
+                        def create_xhtml_files(input_file_path, output_directory):
+                            # Ensure the output directory exists
+                            if not os.path.exists(output_directory):
+                                os.makedirs(output_directory)
+                    
+                            with open(input_file_path, 'r', encoding='utf-8') as file:
+                                content = file.read()
+                    
+                            chapter_splits = re.split(r'Chapter (\d+): ([^\n]+)\n', content)[1:]
+                    
+                            for i in range(0, len(chapter_splits), 3):
+                                chapter_number = chapter_splits[i]
+                                chapter_title = chapter_splits[i + 1]
+                                chapter_content = chapter_splits[i + 2]
+                    
+                                soup = BeautifulSoup('', 'html.parser')
+                                h1_tag = soup.new_tag('h1')
+                                h1_tag.string = f"Chapter {chapter_number}: {chapter_title}"
+                                soup.append(h1_tag)
+                    
+                                for paragraph in chapter_content.strip().split('\n\n'):
+                                    p_tag = soup.new_tag('p')
+                                    p_tag.string = paragraph.strip()
+                                    soup.append(p_tag)
+                    
+                                xhtml_content = soup.prettify(formatter="html")
+                                output_file_path = os.path.join(output_directory, f"chapter_{chapter_number}.xhtml")
+                    
+                                with open(output_file_path, 'w', encoding='utf-8') as file:
+                                    file.write(xhtml_content)
+                    
+                                console.log(`Chapter ${chapter_number} saved to ${output_file_path}`);
+                    </code></pre>
+                   
+                </div>
+            </td>
+
+            <!-- Code Snippet 2 -->
+            <td>
+                <div class="code-snippet">
+                    <h2>TXT to XHTML</h2>
+                    <pre><code class="language-python">
+            import re
+            from bs4 import BeautifulSoup
+            import os
+            
+            def create_xhtml_files(input_file_path, output_directory):
+                # Ensure the output directory exists
+                if not os.path.exists(output_directory):
+                    os.makedirs(output_directory)
+            
+                with open(input_file_path, 'r', encoding='utf-8') as file:
+                    content = file.read()
+            
+                chapter_splits = re.split(r'Chapter (\d+): ([^\n]+)\n', content)[1:]
+            
+                for i in range(0, len(chapter_splits), 3):
+                    chapter_number = chapter_splits[i]
+                    chapter_title = chapter_splits[i + 1]
+                    chapter_content = chapter_splits[i + 2]
+            
+                    soup = BeautifulSoup('', 'html.parser')
+                    h1_tag = soup.new_tag('h1')
+                    h1_tag.string = f"Chapter {chapter_number}: {chapter_title}"
+                    soup.append(h1_tag)
+            
+                    for paragraph in chapter_content.strip().split('\n\n'):
+                        p_tag = soup.new_tag('p')
+                        p_tag.string = paragraph.strip()
+                        soup.append(p_tag)
+            
+                    xhtml_content = soup.prettify(formatter="html")
+                    output_file_path = os.path.join(output_directory, f"chapter_{chapter_number}.xhtml")
+            
+                    with open(output_file_path, 'w', encoding='utf-8') as file:
+                        file.write(xhtml_content)
+            
+                    console.log(`Chapter ${chapter_number} saved to ${output_file_path}`);
+                    </code></pre>
+                    
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="code-snippet">
+                    <h2>Youtube to MP4</h2>
+                    <pre><code class="language-python">
+                        from pytube import YouTube
+                        import os
+
+                        def download_youtube_video(url, path):
+                            # Create a YouTube object
+                            yt = YouTube(url)
+
+                            # Get the highest resolution stream
+                            stream = yt.streams.filter(progressive=True, file_extension='mp4').order_by('resolution').desc().first()
+
+                            # Download the video to the specified path
+                            if stream:
+                                stream.download(output_path=path)
+                                print(f"Downloaded: {yt.title} to {path}")
+                            else:
+                                print("No suitable stream found")
+
+                        # Replace with your YouTube video URL
+                        video_url = input("Enter Youtube URL: ")
+
+                        # Specify your desired download path here
+                        download_path = input("Enter your download path: ")
+
+                        # Create directory if it doesn't exist
+                        if not os.path.exists(download_path):
+                            os.makedirs(download_path)
+
+                        download_youtube_video(video_url, download_path)
+                    </code></pre>
+                    
+                </div> 
+            </td>
+            <td>
+                <div class="code-snippet">
+                    <h2>Make multiple Folder</h2>
+                    <pre><code class="language-python">
+                        import os
+
+# Function to create folders from a list of folder names
+def create_folders(folder_names, base_directory):
+    for folder_name in folder_names:
+        folder_path = os.path.join(base_directory, folder_name)
+        if not os.path.exists(folder_path):
+            os.makedirs(folder_path)
+            print(f"Created folder: {folder_path}")
+        else:
+            print(f"Folder already exists: {folder_path}")
+
+if __name__ == "__main__":
+    # Input folder names from the user
+    folder_names_input = input("Enter folder names (comma-separated): ")
+    
+    # Split the input string into a list of folder names
+    folder_names = [name.strip() for name in folder_names_input.split(",")]
+
+    # Base directory where the folders will be created
+    base_directory = input("Enter the directory you would like to put them in: ")
+
+    # Call the function to create the folders
+    create_folders(folder_names, base_directory)
+
+                    </code></pre>
+                    
+                </div> 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="code-snippet">
+                    <h2>Extention Changer</h2>
+                    <pre><code class="language-python">
+                        import os
+                        import sys
+                        inFolder = input("Please enter the folder location you would like to replace extentions: ")
+                        folder = inFolder
+                        replaceVal = input("Please enter the type of file extension you would like to replace (ex - .pdf): ")
+                        newVal = input("Please eneter the new file extension you would like to use (ex - .pdf): ")
+                        for filename in os.listdir(folder):
+                            infilename = os.path.join(folder,filename)
+                            if not os.path.isfile(infilename): continue
+                            oldbase = os.path.splitext(filename)
+                            newname = infilename.replace(replaceVal, newVal)
+                            output = os.rename(infilename, newname)
+                        print(f"All '{replaceVal}' have be changes to '{newVal}' in directory: '{inFolder}")
+                    </code></pre>
+    
+                </div> 
+            </td>
+        </tr>
+    </table></center>
+
+    <!-- Add more code snippets as needed -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            document.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightBlock(block);
+            });
+        });
+    </script>
+</body>
+</html>
