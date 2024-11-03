@@ -115,3 +115,59 @@ p{
     align-items: center; /* Horizontally center */
     height: 100vh; /* Make it full-height */
 }
+img {
+  max-width: 100%;
+  height: auto;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+td {
+  padding: 10px;
+}
+@media (max-width: 768px) {
+  table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+  }
+}
+@media (max-width: 768px) {
+  h1, h2, h3 {
+      font-size: 2.5em;
+  }
+  .center-container {
+      padding: 10px;
+  }
+  .button {
+      flex-direction: column;
+      align-items: center;
+  }
+}
+@media (max-width: 480px) {
+  h1, h2, h3 {
+      font-size: 1.5em;
+  }
+  p {
+      font-size: 0.9em;
+  }
+  .avatar {
+      width: 150px;
+      height: 150px;
+  }
+}
+@media (max-width: 768px) {
+  .ml9 {
+      font-size: 3em;
+  }
+}
+@media (max-width: 480px) {
+  .ml9 {
+      font-size: 2em;
+  }
+}
+.button {
+  padding: 10px;
+  font-size: 1.2em;
+}
