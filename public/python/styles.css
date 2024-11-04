@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #3a3838;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  header {
+    background-color: #288dc7;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-size: 2.5em;
+}
+
+header p {
+    font-size: 1.1em;
+}
+
+.portfolio {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 30px 0;
+}
+
+.script-card {
+    background-color: white;
+    border: 5px solid #26cfdb70;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    padding: 20px;
+    text-align: center;
+    width: 300px;
+    transition: transform 0.3s ease;
+}
+
+.script-card:hover {
+    transform: translateY(-5px);
+}
+
+.script-card h3 {
+    margin-bottom: 10px;
+    color: #0077b6;
+}
+
+.script-card p {
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.button {
+    display: inline-block;
+    background-color: #0077b6;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #005f87;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #333;
+    color: white;
+    margin-top: 20px;
+}
+.back-button {
+    display: inline-block;
+    background-color: #f4f4f4;
+    color: #0077b6;
+    padding: 10px 15px;
+    border: 1px solid #0077b6;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+    margin-top: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #0077b6;
+    color: white;
+}

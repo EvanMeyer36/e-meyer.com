@@ -4,54 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
 </head>
 <body>
-    <div id="main" class="center">
-        <h1 class="ml9">
-            <center>
-                <span class="text-wrapper">
-                    <span class="letters">Evan Meyer</span>
-                </span>
-            </center>
-        </h1>
-        <center><img src="res/profile.png"/></center>
-        <center>
+    <header>
+        <div class="container">
+            <h1>Evan Meyer</h1>
+            <p>Exploring technology, creativity, and performance.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="about">
+            <img src="res/profile.png" alt="Profile" class="profile-pic">
             <p>Welcome to <b><u>e-meyer.com!</u></b> I'm <b>Evan Meyer</b>, a soon-to-be graduate from Eastern Michigan University, earning my Bachelor of Science in Computer Science in December 2024. I'm passionate about exploring the intersections of technology, creativity, and performance.</p>
             <p>My interests span a wide array: racing, building and experimenting with software and hardware, and creating immersive 3D models and interactive games. I've worked on exciting projects like <b>CampQuest</b>, a MERN stack web app, and ventured into the world of motion capture for animated characters. You can find some of these experiments and projects featured here!</p>
             <p>In addition to web and game development, I have experience as a technician, where I optimized communication systems for businesses across Michigan, and as the owner of C-LEC Inc., overseeing system installations and customer connectivity solutions.</p>
             <p>Feel free to dive into my demos, and let's connect to explore more about my work and interests!</p>
-            <p><b>Check out the demos I've made:</b></p>
-        </center>
+        </section>
+        
+        <!-- Portfolio Section -->
+        <section class="projects">
+            <h2>My Projects</h2>
+            <div class="project-grid">
+                <a href="http://34.237.102.85:3000" class="buttonish"><img src="res/campquest.png" alt="CampQuest"></a>
+                <a href="/Hatch/index.html" class="buttonish"><img src="res/hatch.png" alt="Hatch"></a>
+                <a href="/f1/index.html" class="buttonish"><img src="res/f1.png" alt="F1"></a>
+                <a href="https://remeylol.itch.io" class="buttonish"><img src="res/itch.png" alt="Itch.io"></a>
+                <a href="https://github.com/EvanMeyer36" class="buttonish"><img src="res/git.png" alt="GitHub"></a>
+            </div>
+        </section>
+        <section class="portfolio">
+            <div class="script-card">
+                <img src="res/f1-ticker.png" alt="F1 Ticker Project Image" class="project-image" hidden>
+                <h3>Project 1: F1-ticker</h3>
+                <p>This is a script I made for my Raspberry Pi and I2C 1602 to have a constant ticker of Formula 1 race results as well as news headlines using API requests from Ergast and RSS from GPBlog.</p>
+                <a href="/public/python/scripts/f1-ticker.py" class="button">View Script</a>
+            </div>
+            <div class="script-card">
+                <img src="" alt="Web Scraper Project Image" class="project-image" hidden>
+                <h3>Project 2: Youtube Playlist Downloader Python Script</h3>
+                <p>An automated downloader that takes a playlist link from youtube and will download the entire playlist</p>
+                <a href="/public/python/scripts/ytdlplaylist.py" class="button">View Script</a>
+            </div>
+            <div class="script-card">
+                <img src="" alt="Machine Learning Project Image" class="project-image" hidden>
+                <h3>Project 3: Starcraft 2 Bot</h3>
+                <p>A simple bot that can play Starcraft 2 using the sc2 API</p>
+                <a href="/public/python/scripts/bot_script.py" class="button">View Script</a>
+            </div>
+            <!-- Add more script cards as needed -->
+        </section>
+        <!-- Music Section -->
+        <section class="music">
+            <h2>My Music</h2>
+            <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/3tb9aRrvYXqAq8sz6hFUPs?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </section>
+    </main>
 
-        <center>
-            <table>
-                <tbody>
-                    <tr>
-                        <td><a href="http://34.237.102.85:3000" class="button"><img src="res/campquest.png"></a></td>
-                        <td><a href="/Hatch/index.html" class="button"><img src="res/hatch.png"></a></td>
-                        <td><a href="/f1/index.html" class="button"><img src="res/f1.png"></a></td>
-                    </tr>
-                    <tr>
-                        <td><a href="/python/index.html" class="button"><img src="res/python.png"></a></td>
-                        <td><a href="https://remeylol.itch.io" class="button"><img src="res/itch.png"></a></td>
-                        <td><a href="https://github.com/EvanMeyer36" class="button"><img src="res/git.png"></a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </center>
-        <br>
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/3tb9aRrvYXqAq8sz6hFUPs?utm_source=generator" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-    </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Evan Meyer. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
-        // Wrap every letter in a span
+        // Animation for the title
         var textWrapper = document.querySelector('.ml9 .letters');
         textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-
-        anime.timeline({loop: true})
+        anime.timeline({ loop: true })
             .add({
                 targets: '.ml9 .letter',
                 scale: [0, 1],
@@ -65,21 +88,6 @@
                 easing: "easeOutExpo",
                 delay: 1000
             });
-
-        // Initialize the Vanta.js fog effect on the body
-        VANTA.FOG({
-            el: "body",
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            highlightColor: 0xFFFFFF,
-            midtoneColor: 0xAAAAAA,
-            lowlightColor: 0x000000,
-            baseColor: 0x222222,
-            speed: 1.5
-        });
     </script>
 </body>
 </html>

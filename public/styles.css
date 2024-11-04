@@ -1,0 +1,121 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #3a3838;
+    color: #fff;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #83888b;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.about {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.profile-pic {
+    width: 150px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.projects,
+.portfolio {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.project-grid,
+.portfolio {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.project-grid .button img {
+    width: 150px;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.project-grid .button img:hover {
+    transform: scale(1.05);
+}
+
+.script-card {
+    padding: 20px;
+    margin-bottom: 20px;
+    width: calc(33% - 40px);
+    transition: transform 0.3s;
+    color: #fff; /* Adjust text color for readability */
+}
+
+.script-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    display: none; /* Hide images by default */
+}
+
+.project-image:not([hidden]) {
+    display: block; /* Show images only if they are not hidden */
+}
+
+.button {
+    display: inline-block;
+    background-color: #0077b6;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+.buttonish {
+  display: inline-block;
+  background-color: #0076b600;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: background-color 0.3s;
+}
+.button:hover {
+    background-color: #005f87;
+}
+
+.music {
+    margin-top: 40px;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #333;
+    color: white;
+    margin-top: 20px;
+}
