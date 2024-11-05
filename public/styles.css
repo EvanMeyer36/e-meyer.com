@@ -1,3 +1,4 @@
+/* Base styles */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,81 +10,84 @@ body {
     background-color: #3c3f3f;
     color: #fff;
     line-height: 1.6;
+    margin: 0;
+    padding: 0;
 }
 
 header {
     background-color: #338bbe;
     color: white;
-    padding: 20px 0;
+    padding: 20px;
     text-align: center;
 }
 
 .container {
-    width: 80%;
+    width: 90%;
+    max-width: 1200px;
     margin: auto;
     overflow: hidden;
+    padding: 0 10px;
 }
 
+/* Profile and about section */
 .about {
     text-align: center;
     margin: 20px 0;
 }
 
 .profile-pic {
-    width: 300px;
+    width: 150px;
     border-radius: 50%;
     margin-bottom: 20px;
 }
 
+/* Social media icons */
+.social-media {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.social-icon img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.3s;
+}
+
+.social-icon img:hover {
+    transform: scale(1.1);
+}
+
+/* Project grid and cards */
 .projects,
 .portfolio {
     margin: 40px 0;
     text-align: center;
 }
 
-.project-grid,
-.portfolio {
+.project-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 20px;
 }
 
-.project-grid .button img {
-    width: 150px;
-    border-radius: 8px;
-    transition: transform 0.3s;
-}
-
-.project-grid .button img:hover {
-    transform: scale(1.05);
-}
-
 .script-card {
+    width: 100%;
+    max-width: 300px;
     padding: 20px;
     margin-bottom: 20px;
-    width: calc(33% - 40px);
     transition: transform 0.3s;
-    color: #fff; /* Adjust text color for readability */
 }
 
 .script-card:hover {
     transform: translateY(-5px);
 }
 
-.project-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    display: none; /* Hide images by default */
-}
-
-.project-image:not([hidden]) {
-    display: block; /* Show images only if they are not hidden */
-}
-
-.button {
+/* Button styling */
+.button,
+.buttonish {
     display: inline-block;
     background-color: #0077b6;
     color: white;
@@ -93,45 +97,60 @@ header {
     font-size: 0.9em;
     transition: background-color 0.3s;
 }
-.buttonish {
-  display: inline-block;
-  background-color: #0076b600;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-size: 0.9em;
-  transition: background-color 0.3s;
-}
+
 .button:hover {
     background-color: #005f87;
 }
 
+/* Music section */
 .music {
     margin-top: 40px;
     text-align: center;
 }
 
+/* Footer styling */
 footer {
     text-align: center;
-    padding: 10px 0;
+    padding: 10px;
     background-color: #333;
     color: white;
     margin-top: 20px;
 }
-.social-media {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 20px;
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    .profile-pic {
+        width: 120px;
+    }
+
+    .script-card {
+        width: 100%;
+    }
+
+    .project-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button,
+    .buttonish {
+        padding: 8px 16px;
+        font-size: 0.8em;
+    }
 }
 
-.social-icon img {
-  width: 40px;
-  height: 40px;
-  transition: transform 0.3s;
-}
+@media (max-width: 480px) {
+    .header {
+        padding: 15px;
+    }
 
-.social-icon img:hover {
-  transform: scale(1.1);
+    .profile-pic {
+        width: 100px;
+    }
+
+    .button,
+    .buttonish {
+        font-size: 0.7em;
+        padding: 6px 12px;
+    }
 }
