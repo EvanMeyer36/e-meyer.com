@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evan Meyer's Website</title>
     <link rel="icon" href="/res/profile.png" type="image/png">
-
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
 </head>
 <body>
+    <div id="particles-js"></div>
     <header>
         <div class="container">
             <h1>Evan Meyer</h1>
@@ -19,7 +20,7 @@
     </header>
 
     <main class="container">
-        <section class="about">
+        <section class="about glass-morphism">
             <img src="res/bigprofile.png" alt="Profile" class="profile-pic">
             <div class="social-media">
                 <a href="https://www.linkedin.com/in/evan-m-meyer/" target="_blank" class="social-icon">
@@ -34,7 +35,6 @@
                 <a href="https://leetcode.com/u/remey/" target="_blank" class="social-icon">
                     <img src="res/leet.png" alt="letcode">
                 </a>
-                
             </div>
             <p>Welcome to <b><u>e-meyer.com!</u></b> I'm <b>Evan Meyer</b>, a soon-to-be graduate from Eastern Michigan University, earning my Bachelor of Science in Computer Science in December 2024. I'm passionate about exploring the intersections of technology, creativity, and performance.</p>
             <p>My interests span a wide array: racing, building and experimenting with software and hardware, and creating immersive 3D models and interactive games. I've worked on exciting projects like <b>CampQuest</b>, a MERN stack web app, and ventured into the world of motion capture for animated characters. You can find some of these experiments and projects featured here!</p>
@@ -42,43 +42,47 @@
             <p>Feel free to dive into my demos, and let's connect to explore more about my work and interests!</p>
         </section>
         
-        
-        <!-- Portfolio Section -->
-        <section class="projects">
+        <section class="projects glass-morphism">
             <h2>My Sites</h2>
             <div class="project-grid">
-                <a href="https://campque-c9b14.web.app" class="buttonish"><img src="res/campquest.png" alt="CampQuest"></a>
-                <a href="/Hatch/index.html" class="buttonish"><img src="res/hatch.png" alt="Hatch"></a>
-                <a href="/f1/index.html" class="buttonish"><img src="res/f1.png" alt="F1"></a>
-                
+                <a href="https://campquest.xyz" class="project-link">
+                    <div class="project-card">
+                        <img src="res/CampQuest-logo.png" alt="CampQuest" />
+                    </div>
+                </a>
+                <a href="/Hatch/index.html" class="project-link">
+                    <div class="project-card">
+                        <img src="res/hatch.png" alt="Hatch" />
+                    </div>
+                </a>
+                <a href="/f1/index.html" class="project-link">
+                    <div class="project-card">
+                        <img src="res/f1.png" alt="F1" />
+                    </div>
+                </a>
             </div>
         </section>
-        <center><h2>My Projects</h2></center>
-        <section class="portfolio">
-        
-            <div class="script-card">
 
-                <img src="res/ticker.png" alt="F1 News & Race Ticker" class="project-image" hidden>
+        <h2 class="section-title">My Projects</h2>
+        <section class="portfolio">
+            <div class="script-card glass-morphism">
                 <h3>F1 News & Race Ticker</h3>
                 <p>This project is an F1 news and race results ticker built using a Raspberry Pi and a 16x2 I2C LCD Display. It fetches data from various APIs and RSS feeds to display real-time F1 news headlines, race results, and championship standings. The project allows users to interact with the display using three buttons for refreshing the feed, toggling features, and cycling through feeds.</p>
                 <a href="https://github.com/EvanMeyer36/f1-ticker" class="button">View Project</a>
             </div>
-            <div class="script-card">
-                <img src="" alt="Web Scraper Project Image" class="project-image" hidden>
+            <div class="script-card glass-morphism">
                 <h3>Youtube Playlist Downloader Python Script</h3>
                 <p>An automated downloader that takes a playlist link from youtube and will download the entire playlist</p>
                 <a href="/python/scripts/ytdlplaylist.py" class="button">View Project</a>
             </div>
-            <div class="script-card">
-                <img src="" alt="Machine Learning Project Image" class="project-image" hidden>
+            <div class="script-card glass-morphism">
                 <h3>Starcraft 2 Bot</h3>
                 <p>A simple bot that can play Starcraft 2 using the sc2 API</p>
                 <a href="/python/scripts/bot_script.py" class="button">View Project</a>
             </div>
-            <!-- Add more script cards as needed -->
         </section>
-        <!-- Music Section -->
-        <section class="music">
+
+        <section class="music glass-morphism">
             <h2>My Music</h2>
             <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/3tb9aRrvYXqAq8sz6hFUPs?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
         </section>
@@ -91,23 +95,78 @@
     </footer>
 
     <script>
-        // Animation for the title
-        var textWrapper = document.querySelector('.ml9 .letters');
-        textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
-        anime.timeline({ loop: true })
-            .add({
-                targets: '.ml9 .letter',
-                scale: [0, 1],
-                duration: 1500,
-                elasticity: 600,
-                delay: (el, i) => 45 * (i + 1)
-            }).add({
-                targets: '.ml9',
-                opacity: 0,
-                duration: 1000,
-                easing: "easeOutExpo",
-                delay: 1000
+        // Particles.js configuration
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#00ff9d'
+                },
+                shape: {
+                    type: 'circle'
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false
+                },
+                size: {
+                    value: 3,
+                    random: true
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#00ff9d',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'repulse'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
             });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.script-card, .project-card, .about').forEach((el) => {
+            observer.observe(el);
+        });
     </script>
 </body>
 </html>
